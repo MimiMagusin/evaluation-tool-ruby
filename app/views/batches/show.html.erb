@@ -1,0 +1,7 @@
+<h1> FIND THE DETAILS ABOUT <%=@batch.name%> HERE... </h1>
+
+
+<a class="btn btn-primary" href="<%=root_path%>" role="button">Back to home!</a>
+
+<%= link_to "[Edit]", edit_batch_path(@batch.id) %>
+<%= link_to "[Delete]", batch_path(@batch.id), method: :delete, data: { confirm: "Are you sure?" } %>

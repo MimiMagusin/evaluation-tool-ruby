@@ -1,0 +1,11 @@
+<h1>Batches</h1>
+
+  <% @batches.each do |batch| %>
+    <a href= "<%= batch_path(batch.id) %>" class="details-link">
+      <h3><%= batch.name%></h3>
+      <h4><%= batch.start_date%> - <%=batch.end_date%></h4>
+    </a>
+  <% end %>
+
+
+<%= link_to "[New Batch]", new_batch_path %>
