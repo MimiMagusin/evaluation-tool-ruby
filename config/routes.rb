@@ -9,8 +9,13 @@ Rails.application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
   root "batches#index"
 
-  resources :students
+
   resources :batches
+  resources :students do
+     resources :evaluations, only: [:create, :index, :show ]
+  end
+
+
 
 
 

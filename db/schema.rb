@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101194558) do
+ActiveRecord::Schema.define(version: 20171103091801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20171101194558) do
     t.string   "name"
     t.date     "end_date"
   end
+
+  create_table "evaluations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "comment"
+    t.string   "color"
+    t.integer  "student_id"
+  end
+
+  add_index "evaluations", ["student_id"], name: "index_evaluations_on_student_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.string   "first_name"
@@ -36,5 +46,6 @@ ActiveRecord::Schema.define(version: 20171101194558) do
 
   add_index "students", ["batch_id"], name: "index_students_on_batch_id", using: :btree
 
+  add_foreign_key "evaluations", "students"
   add_foreign_key "students", "batches"
 end
