@@ -8,10 +8,10 @@ s7 = { name: "Eva", evaluations: [{ comment: "yey", color: "yellow" }]}
 s8 = { name: "Tobias", evaluations: []}
 
 students = [s1, s2, s3, s4, s5, s6, s7, s8]
-
-    red = []
-    yellow = []
-    green = []
+red = []
+yellow = []
+green = []
+random_number = rand(100)
 
     students.each do |student|
       if student[:evaluations].length < 1
@@ -24,7 +24,16 @@ students = [s1, s2, s3, s4, s5, s6, s7, s8]
         red.push(student)
       end
     end
-    
+
+    if random_number < 51
+      random_student = red[rand(red.length - 1)]
+    elsif random_number < 84
+      random_student = yellow[rand(yellow.length - 1)]
+    else
+      random_student = green[rand(green.length - 1)]
+    end
+
+
     #tests
     puts s1
     puts s1[:name]
@@ -40,30 +49,7 @@ students = [s1, s2, s3, s4, s5, s6, s7, s8]
     puts "yellow: #{yellow}"
     puts "********************"
     puts "green: #{green}"
-
-
-#
-#   def pick_a_color(red, yellow, green)
-#     random_number = rand(100)
-#
-#     if random_number < 51
-#       red.
-#     elsif random_number < 84
-#       Student.all.each |student|
-#         selected_students = student.evaluations.last.color.find_by(color: "yellow")
-#       end
-#     else
-#       Student.all.each |student|
-#        selected_students = student.evaluations.last.color.find_by(color: "green")
-#       end
-#     end
-#
-#     pick_a_student(students)
-#   end
-#
-#   def pick_a_student(students)
-#     st
-#   end
-#
-#
-# end
+    puts "********************"
+    puts "********************"
+    puts "********************"
+    puts "random_student: #{random_student}"
