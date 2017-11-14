@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :students do
      resources :evaluations, only: [:create, :index, :show ]
   end
+  resources :random_students, only: [:new]
 
 
 

@@ -1,6 +1,7 @@
 class Student < ActiveRecord::Base
   belongs_to :batch
   has_many :evaluations
+  has_many :random_students
 
   def full_name
     "#{first_name} #{last_name}"
@@ -13,5 +14,4 @@ class Student < ActiveRecord::Base
   def last_evaluation
     last_evaluation = evaluations.last.color
   end
-
 end

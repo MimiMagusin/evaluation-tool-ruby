@@ -1,43 +1,34 @@
 class RandomStudent < ActiveRecord::Base
-  def student_colors
+  belongs_to :student
+
+  def self.colored_students(students)
     red = []
     yellow = []
     green = []
-
-    Student.all.each |student|
-      if student.evaluations.last.color = "red"
+    students.each do |student|
+      if student.evaluations.length < 1
         red.push(student)
-      elsif student.evaluations.last.color = "yellow"
+      elsif student.evaluations.last[:color] == "green"
+        green.push(student)
+      elsif student.evaluations.last[:color] == "yellow"
         yellow.push(student)
       else
-        green.push(student)
+        red.push(student)
       end
     end
-
-    return pick_a_color(red, yellow, green)
+    self.pick_a_student(red, green, yellow)
   end
 
-  def pick_a_color(red, yellow, green)
+  def self.pick_a_student(red, green, yellow)
     random_number = rand(100)
-
-    if random_number < 51
-      red.
-    elsif random_number < 84
-      Student.all.each |student|
-        selected_students = student.evaluations.last.color.find_by(color: "yellow")
-      end
+    if random_number < 51 && red.length > 0
+      @random_student = red[rand(red.length - 1)]
+    elsif random_number < 84 && yellow.length > 0
+      @random_student = yellow[rand(yellow.length - 1)]
+    elsif random_number > 83 && green.length > 0
+      @random_student = green[rand(green.length - 1)]
     else
-      Student.all.each |student|
-       selected_students = student.evaluations.last.color.find_by(color: "green")
-      end
+      random_number = rand(100)
     end
-
-    pick_a_student(students)
   end
-
-  def pick_a_student(students)
-    st
-  end
-
-
 end

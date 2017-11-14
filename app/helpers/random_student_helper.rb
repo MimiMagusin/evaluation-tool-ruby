@@ -1,0 +1,2 @@
+module RandomStudentHelper
+end
