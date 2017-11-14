@@ -1,0 +1,18 @@
+<%= form_for [ @student, @student.evaluations.new] do |f| %>
+
+<%= f.radio_button :color, 'green' %> green
+<%= f.radio_button :color, 'yellow' %> yellow
+<%=  f.radio_button :color, 'red' %> red
+
+
+
+  <%= f.label :comment %>
+  <%= f.text_field :comment %>
+
+  <%= f.hidden_field :student_id, value: @student.id %>
+
+  <div class="actions">
+     <%= f.submit "Evaluate!", class: "btn btn-success" %>
+  </div>
+
+<% end %>

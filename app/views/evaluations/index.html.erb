@@ -1,0 +1,9 @@
+<h1>Evaluations</h1>
+
+  <% @evaluations.each do |evaluation| %>
+      <h3>Color: evaluation.color</h3>
+      <h4> Comment: </h4>
+      <p>evaluation.comment<p>
+  <% end %>
+
+<%= link_to "[New evaluation]", new_evaluation_path %>

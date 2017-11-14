@@ -1,7 +1,34 @@
-<h1> FIND THE DETAILS ABOUT <%=@batch.name%> HERE... </h1>
 
 
-<a class="btn btn-primary" href="<%=root_path%>" role="button">Back to home!</a>
+<p id="notice"><%= notice %></p>
 
-<%= link_to "[Edit]", edit_batch_path(@batch.id) %>
-<%= link_to "[Delete]", batch_path(@batch.id), method: :delete, data: { confirm: "Are you sure?" } %>
+<h1> <%=@batch.name%> HERE... </h1>
+
+<h4>Students of this batch:</h4>
+
+<% if @batch.students.any? %>
+  <ul>
+    <% @batch.students.each do |student| %>
+    <a href= "<%= student_path(student.id) %>" class="details-link">
+     <div class="card" style="width: 20rem;">
+       <img class="card-img-top" src="<%= student.image_url%>" alt="Card image cap">
+       <div class="card-block">
+         <h4 class="card-title"><%= student.full_name%></h4>
+         <p class="card-text">Current Evaluation: <%= student.current_evaluation%></p>
+       </div>
+       <div class="card-block">
+       </div>
+     </div>
+    </a>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no students in this batch.</p>
+<% end %>
+
+
+<a class="btn btn-primary" href="<%=root_path%>" role="button">Back to all batches!</a>
+
+<%= link_to "[New Student]", new_student_path %>
+<%= link_to "[Edit Batch]", edit_batch_path(@batch.id) %>
+<%= link_to "[Delete Batch]", batch_path(@batch.id), method: :delete, data: { confirm: "Are you sure?" } %>

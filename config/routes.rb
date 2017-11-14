@@ -7,10 +7,15 @@ Rails.application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-  root "students#index"
+  root "batches#index"
 
-  resources :students
+
   resources :batches
+  resources :students do
+     resources :evaluations, only: [:create, :index, :show ]
+  end
+
+
 
 
 
