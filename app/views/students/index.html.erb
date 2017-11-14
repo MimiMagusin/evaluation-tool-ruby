@@ -2,17 +2,11 @@
 
 <div class="card-group">
   <% @students.each do |student| %>
-     <a href= "<%= student_path(student.id) %>" class="details-link">
-      <div class="card" style="width: 20rem;">
-        <img class="card-img-top" src="<%= student.image_url%>" alt="Card image cap">
-        <div class="card-block">
-          <h4 class="card-title"><%= student.full_name%></h4>
-          <p class="card-text">Current Evaluation: <%= student.current_evaluation%></p>
-        </div>
-        <div class="card-block">
-        </div>
-      </div>
-     </a>
+   <a href= "<%= student_path(student.id) %>">
+    <img src="<%= student.image_url%>" alt="Profile Picture">
+    <h4><%= student.full_name%></h4>
+    <p>Current Evaluation: <%= student.current_evaluation%></p>
+   </a>
   <% end %>
 </div>
 
