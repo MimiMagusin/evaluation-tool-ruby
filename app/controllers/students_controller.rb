@@ -8,6 +8,11 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
   end
 
+  def random_show
+    random_student = RandomStudent.new
+    @student = random_student.colored_students(Student.all)
+  end
+
   def new
     @student = Student.new
   end

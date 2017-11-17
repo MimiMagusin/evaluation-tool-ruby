@@ -1,7 +1,12 @@
 class RandomStudent < ActiveRecord::Base
   belongs_to :student
 
-  def self.colored_students(students)
+  def initialize(students)
+    @students = students
+    colored_students(students)
+  end
+
+  def colored_students(students)
     red = []
     yellow = []
     green = []
@@ -16,10 +21,10 @@ class RandomStudent < ActiveRecord::Base
         red.push(student)
       end
     end
-    self.pick_a_student(red, green, yellow)
+    pick_a_student(red, green, yellow)
   end
 
-  def self.pick_a_student(red, green, yellow)
+  def pick_a_student(red, green, yellow)
     random_number = rand(100)
     if random_number < 51 && red.length > 0
       @random_student = red[rand(red.length - 1)]
@@ -28,7 +33,7 @@ class RandomStudent < ActiveRecord::Base
     elsif random_number > 83 && green.length > 0
       @random_student = green[rand(green.length - 1)]
     else
-      random_number = rand(100)
+      pick_a_student(red, green, yellow)
     end
   end
 end

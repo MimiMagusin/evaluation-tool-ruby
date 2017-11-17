@@ -6,6 +6,8 @@ class BatchesController < ApplicationController
 
     def show
       @batch = Batch.find(params[:id])
+      students =@batch.students
+      @random_student = RandomStudent.new(students)
     end
 
     def new
